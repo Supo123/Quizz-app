@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height:100vh ;
+            /* overflow-y: hidden; */
+            overflow-x: hidden; /* Hide overflow to prevent scrolling */
+            display: flex;
+            flex-direction: column;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .video1{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 925px;
+            z-index: -2; /* Ensures video is behind content */
+            flex: 1;
+            overflow: hidden;
+        }
+        .video1 video{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            object-fit: cover;
+            overflow-y: hidden;
+        }
+        .nav-container{
+            position: relative;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-left{
+            width:100px;
+            height:100px;
+        }
+        .logo{
+            width:80px;
+            padding: 30px;
+            transition: transform 0.3s ease; /* Optional: Smooth transition on transform */
+    animation: rotateLogo 5s linear infinite; /* Animation for continuous rotation */
+}
+
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg); /* Start rotation from 0 degrees */
+    }
+    to {
+        transform: rotate(360deg); /* End rotation at 360 degrees (one full rotation) */
+    }
+}
+        .nav-middle nav {
+            position: relative;
+            left:360px;
+            width:400px;
+            height:100px;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+            float: right;
+            text-decoration: none;
+            text-align: center;
+            align-items: center;
+        }
+        .nav-middle nav a{
+            
+            display: flex;
+            float: right;
+            justify-content: end;
+            text-decoration: none;
+            color: rgb(41, 16, 105);
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .nav-middle nav a:hover{
+            color: rgb(223, 223, 125);
+        }
+        .nav-right{
+            padding: 30px;
+        }
+        .humburger{
+            width:30px;
+           margin: 8px;
+        }
+        .header-section{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           text-align: center;
+           
+            font-size: 30px;
+            color: rgb(45, 18, 197);
+            position: relative;
+            top:60px;
+        }
+        .quotes{
+            display: flex;
+           justify-content: center;
+           align-items: center;
+           text-align: center;
+           font-size: 25px;
+           padding-top: 20px;
+           font-family: Verdana, Geneva, Tahoma, sans-serif;
+           font-weight: bold;
+           margin-top: 40px;
+           color: yellow;
+        
+        animation: slidefromleft 4s ease forwards;
+    opacity: 0;}
+
+@keyframes slidefromleft {
+    0%{
+        opacity: 0;
+        transform: translateX(-100%); 
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0); 
+    }
+}
+.buttons{
+    display: flex;
+    justify-content:space-evenly;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+   
+
+}
+.buttons a{
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: yellow;
+    color: white;
+    width:140px;
+    height:30px;
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.study-tool{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  
+
+}
+.study-tool img{
+    margin-top: 45px;
+   width:65px;
+   height: auto;
+   padding: 30px;
+   animation: slidefromleft1 2s ease infinite;
+}@keyframes slidefromleft1 {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 1; /* Fade in halfway through the animation */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(100%); /* Slide all the way to the right */
+    }
+}
+.middle-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: white;
+    text-align: center; /* Center text inside */
+    margin-top: 20px;
+    width: 100%; /* Span the full width of the viewport */
+    padding: 20px; /* Optional: Add padding for better visual spacing */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.section-part1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    text-align:left;
+    height: 100%; /* Ensure the container takes full height */
+    border-radius: 20px;
+    box-shadow: 0px 5px 5px rgb(51, 8, 125);
+    background-color: rgb(240, 240, 245);
+    width: 525px;
+    height:250px;
+}
+
+.section-part1 h1 {
+    display: flex;
+    justify-content: left;
+    padding: 20px;
+    /* border-radius: 20px;
+    box-shadow: 0px 8px 9px rgb(51, 8, 125); */
+    font-size: 20px;
+    color: #100e0e;
+     /* background-color: rgb(200, 200, 223); */
+    
+}
+.section-part2{
+    font-size: 17px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    padding: 5px;
+}
+.section-button button{
+    width:180px;
+    height:40px;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    padding: 8px;
+    font-weight: bold;
+}
+.section-invite{
+    margin-top: 30px;
+    background-color: rgb(221, 221, 107);
+    width:725px;
+    height:120px;
+    border-radius: 20px;
+    box-shadow: 0px 3px 4px rgb(218, 207, 52);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.gift img{
+    width:50px;
+    padding: 10px;
+   
+    margin: 15px;
+}
+.next{
+    width:50px;
+    padding: 10px;
+    background-color:  rgb(221, 221, 107);
+}
+.explore-section{
+    background-color: white;
+   
+}
+.explore-section ,h1 ,p{
+  padding-left: 10px;
+}
+.template-score{
+            display: grid;
+            justify-content: center;
+            gap: 1.5rem;
+           
+            grid-template-columns:repeat(auto-fit,minmax(250px,300px));
+            border-radius: 2px;
+            padding: 1rem;
+           
+
+            /* background-color:rgb(137, 137, 193) ; */
+            backdrop-filter: blur(26px);
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            box-shadow: 2px 2px 2px grey;
+            border: 1px solid rgb(167, 148, 148);
+            border-radius: 2px;
+            text-decoration: none;
+        }
+        .card_image_container {
+            position: relative;
+            overflow: hidden;
+            height: 14rem;
+        }
+        .card_image {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
+        }
+        .card_image:hover {
+            transform: scale(1.1); /* Example hover effect */
+        }
+        .card_title_container {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+        .card_title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            line-height: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: rgb(230, 196, 43);
+            text-decoration: none;
+        }
+        .card_title a{
+            text-decoration: none;
+        }
+        .card_title:hover {
+            color: blue;
+        }
+        .card_footer_container {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+        .author_container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .author_avatar_container {
+            height: 2.5rem;
+            width: 2.5rem;
+            overflow: hidden;
+            border: 1px solid blue;
+            border-radius: 5px;
+            background-color: rgb(160, 147, 147);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .author-avatar {
+            height: 30px;
+            width: 30px;
+        }
+        .author_info {
+            display: flex;
+            flex-direction: column;
+        }
+        .author_name {
+            color: rgb(230, 196, 43);
+        }
+        .author_date {
+            color: rgb(230, 196, 43);
+        }
+        .card_tag_container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.2rem 0.5rem;
+            font-size: 1rem;
+            border: 1px solid black;
+            border-radius: 2px;
+            list-style: none;
+        }
+        .head{
+            display: flex;
+            justify-content: center;
+        }
+        .head img {
+width:30px;
+        }
+        .head span{
+            font-size: 30px;
+            color: white;
+            padding: 20px;
+        }
+        .laster-portion{
+            background-color: white;
+display: flex;
+text-decoration: none;
+text-align: center;
+align-items: center;
+        }
+        .laster-portion, h1, p{
+            padding:10px;
+        }
+        .laster-portion p{
+            font-size: 25px;
+           font-family: sans-serif;
+           font-weight: lighter;
+           color: grey;
+        }
+        .laster-portion, h1{
+            font-size: 40px;
+            font-weight:600 ;
+            font-family: serif;
+        }
+        .laster-portion, h3{
+            font-size: 30px;
+            font-weight:600 ;
+            font-family: serif;
+            color: yellow;
+        }
+        .container{
+            width:100%;
+            height:100%;
+            display: grid;
+            gap:1rem;
+            /* background-color: rgb(89, 84, 84); */
+            background-color: #fff;
+            grid-template-areas: 
+            "sidebar content1 content1"
+            "sidebar content1 content1"
+             "sidebar content1 content1"
+             "sidebar content1 content1"
+             "sidebar content1 content1"
+            "footer footer footer"
+            
+            ;
+                    }
+                    .item{
+                        
+                        color: #fff;
+                       
+                        padding:1rem;
+                    }
+                    #header{
+                        grid-area: header;
+                    }
+                    #sidebar{
+                        grid-area:sidebar ;
+                        width:118%;
+                        height:325px;
+                    }
+                    #content1{
+                        grid-area:content1 ;
+                        width:100%;;
+                        height:325px;
+                    
+                    }
+                   
+                    #footer{
+                        grid-area: footer;
+                        /* background-color: rgb(156, 136, 211); */
+                       
+                        
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: #100e0e;
+                    }
+                    #footer h1{
+
+                    }
+                    .girl-image{
+                        width:100%;
+                        height:395px;
+                       position: relative;
+                       bottom: 23px;
+                       /* left: 30px; */
+                       right: 30px;
+                       background-size: cover;
+                       
+                    }
+                    .side-img{
+                        width:100%;
+                        height: 395px;
+                        position: relative;
+                       bottom: 23px;
+                       z-index: 4;
+                       
+                    }
+                #content1 p{
+                    z-index: 9;
+                    color:#fff;
+                    font-style: normal;
+                    font-weight: bold;
+                    position: relative;
+                    bottom: 390px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .footer-container{
+                    backdrop-filter: blur(26px);
+                   /* display: flex;
+                   justify-content: center; */
+
+                }
+                .footer-grid{
+                    margin-top: 30px;;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    text-align: center;
+                    align-items: center;
+                  
+                }
+                .footer-grid-column li{
+text-align: center;
+list-style: none;
+text-decoration: none;
+position: relative;
+right:20px;
+
+                }
+                .footer-grid-column li a{
+                    color: white;
+                    text-decoration: none;
+                    padding: 4px;
+                    margin: 5px;
+                }
+                .footer-grid-column li a:hover{
+                    color: blue;
+                }
+                .logo-link{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 30px;
+                    box-sizing: border-box;
+                    text-align: left;
+                    font-size: 20px;
+                    font-weight: bolder;
+                    display: flex;
+                    justify-content: center;
+                }
+                .logo-link img{
+                    width:50px;
+                    text-align: center;
+                    
+                } 
+                .logo-link p{
+                    position: relative;
+                    /* right: 25px; */
+                    font-weight: bold;
+                }
+                .logo-link p:hover{
+                    color:blue;
+                }
+                .socials{
+                    display: flex;
+                    justify-content:space-around;                  
+                }
+                .socials img{
+                    width:50px;
+                }
+                .footer-grid-heading{
+                    color: rgb(19, 15, 81);
+                    font-size: 25px;
+                    font-weight: bolder;
+                }
+                
+                
+                .footer-copyright {
+                    display: flex;
+                    justify-content: center;
+                    font-size: 30px;
+                    color: #fff;
+                }
+                .footer-copyright h3{
+                    font-size: 10px;
+                    color: #fff;
+                }
+                .sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    background-color: #aca0ca;
+    padding-top: 60px;
+    transition: all 0.3s ease;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    /* position: absolute;
+    top:50px; */
+}
+
+.sidebar ul li {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    top:60px;
+    margin-left: 40px;
+}
+
+.sidebar ul li a:hover {
+    color: grey;
+    border: 1px solid blue;
+    background-color: #684da7;
+    width:130px;
+    height:40px;
+    border-radius:5px ;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding-left: 20px;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#open-btn{
+    cursor:pointer;
+}
+.img-1{
+    width:20px;
+position: relative;
+top:6px;
+padding-right: 20px;
+}
+.sidebar-logo-img img{
+   width:45px;
+   padding-left: 20px;
+   margin: 10px;
+}
+.sidebar-info{
+    padding-left: 20px;
+    position: relative;
+}
+.sidebar-info h4{
+    font-size: 20px;
+    color:black;
+    position:relative;
+    bottom: 20px;
+}
+.sidebar-info p{
+    background-color: rgb(38, 38, 197);
+    display: inline;
+    border-radius: 6px;
+    position: relative;
+    font-size: 10px;
+    bottom: 20px;
+    color:white;
+}
+.create-account{
+   
+    position: relative;
+    top:20px;
+}
+.create-account button{
+    background-color: #725da4;
+    border: none;
+    width:155px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bolder;
+    font-size: 20px;
+    box-shadow: 0px 3px 4px blueviolet;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+.create-account button:hover{
+    transform: scale(1.1);
+}
+.img-animation{
+    display: flex;
+    flex-direction: row;
+
+}
+.img-animation img{
+    width:260px;
+    padding: 20px;
+    margin: 20px;
+    z-index: 4;
+}
+.img-animation{
+       position: relative;
+        right: 0;
+        width: 100px; /* Adjust image width */
+        animation: slideLeft 5s linear infinite; /* Adjust animation duration and timing */
+    }
+
+    @keyframes slideLeft {
+        0% {
+            right: 0; /* Start position */
+        }
+        100% {
+            right: calc(100% - 100px); /* End position (adjust based on image width) */
+        }
+    }
+    .explore-part{
+        z-index: 200;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 200;
+        padding: 10px;
+    }
+
+    .dropdown-content a {
+        color: black;
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown-content{
+        width:425px;
+        border-radius: 10px;
+box-shadow: 2px 5px 5px grey;
+       
+    }
+    .dropdown-content1{
+        color: grey;
+    }
+    .motivate{
+        color:rgb(25, 101, 25);
+    }
+     .impo{
+        color:blue;
+    }
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 380px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.container {
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left:40px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    margin-right:5px ;
+    color: #666;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-group button {
+    display: flex;
+    justify-content: center;
+    width: 130px;
+    padding: 10px;
+    background-color: #6c5c7a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    top:40px;
+}
+
+.input-group button:hover {
+    background-color: #35135e;
+}
+
+.error-msg {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#showLoginBtn{
+
+cursor: pointer;
+}
+#loginform h2{
+    position: relative;
+    bottom:40px;
+    left:20px;
+}
+.account1-info{
+    position: relative;
+    top:75px;
+    left:16px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.account1-info h2{
+    color: grey;
+    font-weight: lighter;
+}
+#register-container{
+background: white;
+width:500px;
+padding:25px;
+margin:50px auto 0;
+border-top: 5px solid blue;
+box-shadow: 0 0 5px 4px grey;
+}
+#register-container img{
+    width:20px;
+}
+#register-container h2{
+    font-size: 24px;
+    line-height: 24px;
+    padding:30px;
+    text-align: center;
+
+}
+.input-name{
+    width:90%;
+    position: relative;
+    margin:20px auto
+}
+
+.hidden{
+    display: none;
+}
+
+
+
+
+
+    </style>
+    
+</head>
+<body>
+   <div class="video1">
+    <video width="100%" height="425px" autoplay muted loop>
+        <source src="https://videos.pexels.com/video-files/7989417/7989417-hd_1080_1920_25fps.mp4" type="video/mp4">
+      </video>
+   </div>
+   
+<div class="nav-container">
+<div class="nav-left">
+<img class="logo" id="rotate" src="https://cdn-icons-png.flaticon.com/128/3261/3261190.png"/>
+
+</div>
+<div class="nav-middle">
+    <div class="sidebar">
+        <div class="sidebar-logo-img">
+<img src="https://cdn-icons-png.flaticon.com/128/3261/3261190.png"/>
+        </div>
+        <div class="sidebar-info">
+<div class="account">
+<h4>Have an account?</h4>
+<p  id="showLoginBtn"onclick="login()">Login in</p>
+<div id="loginModal" class="modal">
+    <div class="modal-content" id="login-page1">
+        <span class="close">&times;</span>
+<div class="container" id="login-container">
+   
+    <form action="#" id="loginform" onsubmit="return validateform()">
+        <h2>Login</h2>
+        <div class="input-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="input-group">
+            <button type="submit">Login</button>
+        </div>
+
+      <div class="account1-info"> <h2>Don't have account?</h2></div>  
+        <div class="input-group">
+            <button type="submit" class="register1"  id="showRegister">Register</button>
+        </div>
+        <div id="error-msg" class="error-msg"></div>
+    </form>
+</div>
+</div>
+
+<div class="hidden" id="register-container">
+    <span class="close" id="close-button-register" onclick="click()">&times;</span>
+    <h2>Registration-form</h2>
+    <form id="register-form">
+        <div class="input-name">
+        <img src="https://cdn-icons-png.flaticon.com/128/456/456212.png" class="lock img">
+<input type="text" id="register-username1" name="register-username" placeholder="First Name" class="name"required/>
+<span>
+    <img src="https://cdn-icons-png.flaticon.com/128/456/456212.png" class="lock img">
+
+    <input type="text" id="register-username2" name="register-username" placeholder="Last Name" class="name"required/>
+</span>
+
+</div>
+<div class="input-name">
+    <img src="https://cdn-icons-png.flaticon.com/128/542/542689.png" class="img">
+    <input type="email" id="register-username3" name="name" placeholder="Email" class="text-name" required/>
+</div>
+<div class="input-name ">
+    <img src="https://cdn-icons-png.flaticon.com/128/16232/16232464.png" class="img">
+    <input type="password" id="register-username4" name="name" placeholder="Password" class="text-name" required/>
+</div>
+
+<div class="input-name">
+    <img src="https://cdn-icons-png.flaticon.com/128/16232/16232464.png" class="img">
+    <input type="password" id="register-username5" name="name" placeholder=" Confirm Password" class="text-name" required/>
+</div>
+
+<div  class="input-name" >
+<input type="radio" class="radio-button">
+<label>Male</label>
+<input type="radio" class="radio-button">
+<label>Female</label>
+</div>
+<div class="input-name">
+<select class="country">
+    <option>Select a country</option>
+    <option value="INDIA">INDIA</option>
+    <option value="ITLAY">ITLAY</option>
+    <option value="NEPAL">NEPAL</option>
+    <option value="USA">USA</option>
+    <option value="UAE">UAE</option>
+    <option value="JAPAN">JAPAN</option>
+</select>
+</div>
+ <div class="input-name">
+<input type="checkbox" class="check-button">
+<label>I accept the terms and conditions</label>
+ </div>
+
+ <div class="input-name">
+   <input type="submit" class="button" value="Register">
+     </div>
+    
+
+    </form>
+</div>
+</div>
+</div>
+<div class="create-account">
+<button onclick="signup()">
+    <a href="Signup.html">Create</a>
+   </button>
+</div>
+        </div>
+        <button class="close-btn">&times;</button>
+        <ul>
+            <li><a href="#">
+                <span><img  class="img-1"src="https://cdn-icons-png.flaticon.com/128/883/883029.png"/></span>
+                Explore</a></li>
+            <li><a href="#">
+                <span><img  class="img-1"src="https://cdn-icons-png.flaticon.com/128/2645/2645897.png"/></span>
+                Notifications</a></li>
+            <li><a href="#">
+                <span><img  class="img-1"src="https://cdn-icons-png.flaticon.com/128/1450/1450932.png"/></span>
+                Reports
+               </a></li>
+            <li><a href="#">
+                
+                <span><img  class="img-1"src="https://cdn-icons-png.flaticon.com/128/767/767304.png"/></span>
+                My Library</a></li>
+            <li><a href="#">
+                <span><img  class="img-1"src="https://cdn-icons-png.flaticon.com/128/1436/1436716.png"/></span>
+                Classes</a></li>
+            <li><a href="#">
+                <span><img  class="img-1"src="https://cdn-icons-png.flaticon.com/128/2040/2040504.png"/></span>
+                Settings</a></li>
+        </ul>
+    </div>
+<nav>
+    <a href="#home">Home</a>
+    <div class="dropdown">
+    <a href="#About">About us</a>
+    <div class="dropdown-content">
+<p class="dropdown-content1">OUR MISSION </p>
+   <h1 class="motivate"> Motivate every student</h1>
+   <p> Quizizz is more than gamified quizzes. We are assessment, instruction, and practice that motivate every student to mastery.
+    
+    Today, we’re used by teachers in 86% of U.S. schools who have created and shared 30+ million activities.</p>
+    <h2 class="impo">50M+ people, in 150+ countries answering 50M+ questions/day.</h2>
+    </div>
+</div>
+    <a href="#Menu">Menu</a>
+</nav>
+</div>
+<div class="nav-right">
+<img  class="humburger" id="open-btn"src="https://cdn-icons-png.flaticon.com/128/2976/2976215.png">
+</div>
+</div>
+<main>
+<div class="header-section">
+<h1>TOGETHER WE'RE SMARTER</h1>
+</div>
+<div class="quotes">
+    <p>It does not matter how slowly you go as long as you do not stop!!</p>
+</div>
+<div class="buttons">
+<a href="#Dailyquiz">Dailyquiz</a>
+<a href="#courses">Course</a>
+<a href="quizpage.html">Start</a>
+</div>
+<div class="study-tool">
+    <!-- <div class="study-container"> -->
+<div class="math">
+<img src="https://cf.quizizz.com/image/subject-math.png">
+</div>
+<div class="english">
+    <img src="https://cf.quizizz.com/image/subject-english.png">
+    </div>
+    <div class="social-studies">
+        <img src="https://cf.quizizz.com/image/subject-social-studies.png">
+        </div>
+        <div class="language">
+<img src="https://cf.quizizz.com/image/subject-world-languages.png">
+        </div>
+        <div class="science">
+            <img src="https://cf.quizizz.com/image/subject-science.png">
+                    </div>
+                    <div class="computers">
+                        <img src="https://cf.quizizz.com/image/subject-computers.png">
+                                </div>
+                                <div class="career-ed">
+                                    <img src="https://cf.quizizz.com/image/subject-career-ed-professional-development.png">
+                                            </div>
+                                        <!-- </div> -->
+
+</div>
+
+</main>
+<section class="middle-part">
+    <div class="section-part1">
+        <div>
+<h1>Make your own quizzes!</h1>
+</div>
+
+    <div class="section-part2">
+<p >Engage live or asynchronously with quiz and poll questions</p>
+    </div>
+    <div class="section-button">
+        <button>create a quiz</button>
+    </div>
+</div>
+
+<div class="section-invite">
+<h3>Invite & earn free Super</h3>
+<div class="gift">
+<img src="https://cdn-icons-gif.flaticon.com/13373/13373600.gif">
+<img class="next" src="https://cdn-icons-png.flaticon.com/128/2722/2722998.png">
+</div>
+</div>
+</section>
+<div class="explore-section">
+<h1>Explore</h1>
+<p>Choose from millions of teachers-created content</p>
+</div>
+<div class="template-score">
+   
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d9f3c5cb-226b-4429-a00f-2aa456c70935?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Daily Check in</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">4 Questions</span>
+                        <span class="author_date">154k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/56c3e291-603c-4494-a158-3b6920602553-v2?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">
+                    Math:6th Grade 
+                </h1> 
+                </a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">21 questions</span>
+                        <span class="author_date">31.K plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/50bce5f0-d276-450a-b9c5-6f60a1e41745?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title"> Math:7th Grade </h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 Questions</span>
+                        <span class="author_date">8.1k Plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span> Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/6fcc9b94-bf7a-499c-883b-ced484866742?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Frations</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">20 Questions</span>
+                        <span class="author_date">5.3k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d785913b-38c1-44ed-a86e-6520327f5486?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Shapes</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">35 Questions</span>
+                        <span class="author_date">2.8K plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/313900c0-c4eb-41c3-97b5-280ccb09f222?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Polynomial</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">20 Questions</span>
+                        <span class="author_date">10.7k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b074e5ac-9cda-456f-a1e6-eef27d7086cb?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">English Grammar</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">11 Questions</span>
+                        <span class="author_date">16.6K plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/dd11df25-a63d-4f6e-9e29-a541fc5f8ace?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Preposition</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">10 Questions</span>
+                        <span class="author_date">4.2k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5325a419-a48a-4f69-ba8e-f16de943d97e?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Noun</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">16 Questions</span>
+                        <span class="author_date">2.7k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/53801024-0900-48a1-9b24-e66e6e012fbd?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Agriculture</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">12 Questions</span>
+                        <span class="author_date">9.7k Plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/48432633-55cc-458d-b532-5e097595ad5a?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Latitudes&Longitudes</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">30 Questions</span>
+                        <span class="author_date">1.3k PLays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/00681e07-5496-4ef3-9321-5895a49fe44a?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Rise of Nationalism </h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">10 Questions</span>
+                        <span class="author_date">3.7k Plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/41a70990-dac0-4078-a5d8-77ea7408a93a?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">World Languages</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">12 Questions</span>
+                        <span class="author_date">14.3k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a74163af-09e8-4f48-bf43-b5ee34552c54?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Airport,Train&Museum </h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 questions</span>
+                        <span class="author_date">109 plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b899fbf6-35dc-400b-b34e-8bb6878a7c5f?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Les Respas</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">10 Questions</span>
+                        <span class="author_date">10.7k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/L2FwcGhvc3RpbmdfcHJvZC9ibG9icy9BRW5CMlVxQTdQdXkwdVZjTnkteTFrdnFaOWk4RFEyZk9Jb2ZMeDJoWXRta3ctOUlTN0ZNNWVVV0FUWUxzcHNXZ2xxS0VLSGtFOG1BWXAtTV9jOXZDeHZuSV9yWUxrMzhSU2Y5Q0ZZa0JhNjhKQ0MwQ0lSNmxiWS5iQXVVd0lXTFQ5b2tHcUo5?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title">Hydrosphere</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 Questions</span>
+                        <span class="author_date">3k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e996a68e-54a6-4992-b7ab-56374e5a8155?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title"> True Friends-Animals</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 Questions</span>
+                        <span class="author_date">24.k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e7ea1f14-a24c-426b-a249-99c913a281b9?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title"> Matter</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 Questions</span>
+                        <span class="author_date">4k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/8cac8782-a88a-468d-a55f-5c41c5087e1b?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title"> Python Basics</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 Questions</span>
+                        <span class="author_date">14k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/915392e8-9573-40a4-94aa-d49e0eb8a536?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title"> Computer&Architecture</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 Questions</span>
+                        <span class="author_date">14k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+    <div class="main_container">
+        <div class="card-container">
+            <a href="#" class="card_image_container">
+                <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5ca2a28d-3e32-49f9-ab20-e8bbed7df3b6?w=400&h=400" alt="image" class="card_image" loading="lazy">
+            </a>
+            <div class="card_title_container">
+                <a href="#"><h1 class="card_title"> Keyboard</h1></a> 
+            </div>
+            <div class="card_footer_container">
+                <div class="author_container">
+                    <div class="author_avatar_container">
+                        <img src="https://w7.pngwing.com/pngs/347/1020/png-transparent-woman-in-white-and-black-lace-long-sleeved-top-avatar-cartoon-girl-cuteness-illustration-sunglasses-girl-comics-face-fashion-girl-thumbnail.png" class="author-avatar" alt="author avatar">
+                    </div>
+                    <div class="author_info">
+                        <span class="author_name">15 Questions</span>
+                        <span class="author_date">14k plays</span>
+                    </div>
+                </div>
+                <div class="card_tag_container">
+                    <span>Quiz</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the card-container div for each card -->
+        
+    </div>
+</div>
+
+<div class="laster-portion">
+<div class="make">
+<h1>MAKE AN IMPACT</h1>
+<p>We set the industry standard for bringing learning to life. We are dedicated to producing the highest quality content — from instruction, to imagery and motion graphics, to audio and video. And, we’ve built an entire production studio to create compelling educational content.</p>
+<h3>JOIN MORE THAN 4,000,000 STUDENTS & TEACHERS ON Quizz</h3>
+</div>
+
+</div>
+
+<div class="grid-part">
+    <div class="container">
+        
+        <div class="item" id="sidebar">
+<img class="girl-image" src="https://images.pexels.com/photos/3807742/pexels-photo-3807742.jpeg?auto=compress&cs=tinysrgb&w=400">
+
+        </div>
+        <div class="item" id="content1">
+        <img  class="side-img"src="https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg?auto=compress&cs=tinysrgb&w=600">
+
+<p>LIVE TO LEARN
+    We believe that learning is a life-long pursuit. When provided inspired content, students realize that learning is living. We use every opportunity to make learning rigorous, engaging and meaningful.</p>
+
+<div class="img-animation">
+<img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=400"/>
+<img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
+<img src="https://images.pexels.com/photos/5940838/pexels-photo-5940838.jpeg?auto=compress&cs=tinysrgb&w=400"/>
+<img src="https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
+<img src="https://images.pexels.com/photos/4173331/pexels-photo-4173331.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load">
+<img src="https://images.pexels.com/photos/8617987/pexels-photo-8617987.jpeg?auto=compress&cs=tinysrgb&w=600"/>
+<img src="https://images.pexels.com/photos/3401403/pexels-photo-3401403.jpeg?auto=compress&cs=tinysrgb&w=600"/>
+
+</div>
+
+    </div>
+        <div class="item" id="footer">
+            <h1 class="explore-part">Explore Quizz & Gain knowledge</h1>
+        </div>
+</div>
+
+<div class="footer-container">
+    <footer class="footer">
+<div class="footer-top">
+    <div class="comp-logo">
+<a class="logo-link">
+    <img src="https://cdn-icons-png.flaticon.com/128/3261/3261190.png">
+    Quiz
+<p class="filter-text">Seamless Learning for Brighter Future </p>
+</a>
+<div class="socials">
+<a class="social-links">
+    <img src="https://cdn-icons-png.flaticon.com/128/3955/3955024.png"/>
+</a>
+<a class="social-links">
+    <img src="https://cdn-icons-png.flaticon.com/128/145/145802.png"/>
+</a>
+<a class="social-links">
+    <img src="https://cdn-icons-png.flaticon.com/128/733/733579.png"/>
+</a>
+<a class="social-links">
+    <img src="https://cdn-icons-png.flaticon.com/128/646/646094.png"/>
+</a>
+</div>
+<div class="footer-grid">
+    <div class="footer-grid-column">
+        <div class="footer-grid-heading">
+            Products
+        </div>
+        <ul class="footer-links-list">
+<li>
+    <a href="#overview" class="footer-link">Overview</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Solutions</a>
+</li>
+
+<li>
+    <a href="#overview" class="footer-link">Pricing</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Customers</a>
+</li>
+        </ul>
+    </div>
+
+    <div class="footer-grid-column">
+        <div class="footer-grid-heading">
+           Company
+        </div>
+        <ul class="footer-links-list">
+<li>
+    <a href="#overview" class="footer-link">About</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Invester Relations</a>
+</li>
+
+<li>
+    <a href="#overview" class="footer-link">Jobs</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Press</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Blog</a>
+</li>
+        </ul>
+    </div>
+
+    <div class="footer-grid-column">
+        <div class="footer-grid-heading">
+            Support
+        </div>
+        <ul class="footer-links-list">
+<li>
+    <a href="#overview" class="footer-link">Contact</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Documentation</a>
+</li>
+
+<li>
+    <a href="#overview" class="footer-link">Chat</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">FAQ</a>
+</li>
+        </ul>
+    </div>
+
+    <div class="footer-grid-column">
+        <div class="footer-grid-heading">
+           Legal
+        </div>
+        <ul class="footer-links-list">
+<li>
+    <a href="#overview" class="footer-link">Tearms of Service</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Privacy Policy</a>
+</li>
+
+<li>
+    <a href="#overview" class="footer-link">Cookie Settings</a>
+</li>
+<li>
+    <a href="#overview" class="footer-link">Help&Service</a>
+</li>
+        </ul>
+    </div>
+
+
+</div>
+    </div>
+</div>
+
+    </footer >
+    <!-- <hr class="break"> -->
+    <div class="footer-copyright">
+<h3>2024- present quizz. All rights reserved</h3>
+    </div>
+</div>
+<script src="index.js">
+
+</script>
+</body>
+</html>
